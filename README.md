@@ -21,3 +21,7 @@ Layers used for visualizing tree cover loss (raster tiles) and World Database of
 
 To build and deploy locally, follow the instructions in each directory of this repo.
 
+## AI
+
+The Forester project is linked to the Pyeo Random Forest Classifier ML Model, which is the pre-trained model used to compare images of the environment over time in order to detect deforestations in the areas given as input.
+

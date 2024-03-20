@@ -7,6 +7,14 @@ It specializes on forest cover loss awareness and detection, leveraging a powerf
 
 The flow is pretty simple at the moment: first, register/login into Keycloak, after which you're redirected to the main page, which contains a world map. Next, you can toggle different layers and basemaps, which show you info regarding the tree cover loss over the course of 20 years. The main functionality of the app is the live monitoring using pyeo: select an enclosed area (using the draw tools) that you want to monitor, enter a starting date for the initial satellite data and wait for an email with the results to be delivered.
 
+## Screenshots
+
+<img width="1198" alt="image" src="https://github.com/cncf-hacks/forester/assets/53219413/d00027d1-9691-498a-b133-49035c663e27">
+
+<img width="1189" alt="image" src="https://github.com/cncf-hacks/forester/assets/53219413/12eef650-82ee-48f1-b4d1-0ab13b5a00ed">
+
+<img width="1195" alt="image" src="https://github.com/cncf-hacks/forester/assets/53219413/f0368cf8-d5d5-45f9-b559-cf2dcccc0e4f">
+
 ## Data acquisition
 
 Map tile rendering is made possible by the [MapLibre JS](https://maplibre.org/maplibre-gl-js/docs/) framework, an open source fork of the [Mapbox](https://docs.mapbox.com/mapbox-gl-js/guides/) library.

@@ -1,0 +1,32 @@
+<div class="m-6 top-0 bottom-0 left-0 right-0 absolute">
+  <div class="border-black h-full w-full rounded-sm border-solid relative">
+    <div id="map" class="h-full absolute"></div>
+    <div class="z-0 font-light text-sm bottom-2 left-2 absolute rounded-xl bg-white px-2"><a
+        href="https://frontend.forester.dvloper.io">Forester</a></div>
+    <div class="z-0 m-2 absolute top-0 left-0">
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mx-1"
+        (click)="onToggleLayer()">
+        Toggle Base Layer
+      </button>
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mx-1"
+        (click)="onToggleOverlay()">
+        Toggle Tree Cover Loss Layer
+      </button>
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mx-1"
+        (click)="onToggleWdpa()">
+        Toggle WDPA Layer
+      </button>
+    </div>
+
+    <div *ngIf="showDatePicker" class="z-0 absolute top-28 right-20 w-80 p-4 bg-white rounded-md">
+      <span class="text-gray-700">Select a start date for monitoring changes</span>
+      <mat-form-field class="w-full">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" (dateInput)="onDateSelected($event)">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker">
+        </mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </div>

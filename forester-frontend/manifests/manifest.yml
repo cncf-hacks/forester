@@ -1,0 +1,38 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: forester-frontend-deployment
+  labels:
+    app: forester-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: forester-frontend
+  template:
+    metadata:
+      labels:
+        app: forester-frontend
+    spec:
+      containers:
+        - name: forester-frontend
+          image: harbor.dvloper.io/forester/forester-frontend:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 4200
+      imagePullSecrets:
+        - name: harbor-login
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: forester-frontend-service
+spec:
+  type: ClusterIP
+  ports:
+    - name: backend
+      targetPort: 4200
+      port: 4200
+  selector:
+    app: forester-frontend

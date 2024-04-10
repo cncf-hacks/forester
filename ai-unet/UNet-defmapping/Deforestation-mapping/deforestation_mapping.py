@@ -44,7 +44,7 @@ import matplotlib.pyplot as plt
 def download_file(url, retries=5):
     # connect to the API
     user = 'rzamfir@dvloper.io'
-    password = 'Rz@mfir12345' 
+    password = '' # add password 
     
     # Import credentials
     keycloak_token = get_keycloak(user, password)
@@ -177,8 +177,8 @@ def download_images(save_imgs, save_rgb, save_tiles, unet_weights, unet_clouds,
                 continue
             zip_ref.extractall(save_imgs)
             zip_ref.close()
-            # os.remove(path_zip_name) # remove .zip file
-            print("%s has been (NOT) removed successfully" %prName) 
+            os.remove(path_zip_name) # remove .zip file
+            print("%s has been removed successfully" %prName) 
 
             SAFE_file_name = prName + ".SAFE"
             
@@ -640,7 +640,7 @@ def cloud_masks(path_to_folder, save_class_path):
         
     # create a new mask, just with the values for not be contabilized later (1, 2, 3, 6, 8, 9, 10, 11)
     print("BSCL: ", BSCL)
-    if BSCL == None:
+    if BSCL is None:
         print("No clouds in this image on path ", path_to_folder)
         return BSCL
     BSCL = np.where(BSCL<=3, 9999, BSCL) 

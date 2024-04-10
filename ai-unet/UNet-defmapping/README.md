@@ -1,36 +1,35 @@
 # Deforestation mapping using UNets
 
-This repository contains the scripts referring to a methodology that performs the deforestation mapping using UNets and satellite images from Sentinel-2, 
+This repository contains the scripts referring to a methodology that performs the deforestation mapping using UNets and satellite images from Sentinel-2,
 being part of my master's thesis in Environmental Science and Technology.
 The methodology was tested for mapping deforestation spots using images from the Amazon and Atlantic Rainforest biomes, 
 located in Brazil. Therefore, the files presented in the "Files" folder refer to UNets trained using images from these both regions. 
 The results of these applications are being evaluated in journals and the access links will be made available as soon as they undergo peer review.
-<br/>
-
 
 ## 1 Usage
 
-To identify deforestation in areas where UNet has already been trained (Amazon and Atlantic Rainforest), it is possible to directly use the scripts presented in the 
-Deforestation-mapping folder and the files available in "Files". Otherwise, it is necessary to carry out a new training, using the training files of UNet in the folder of the same name. 
+To identify deforestation in areas where UNet has already been trained (Amazon and Atlantic Rainforest), it is possible to directly use the scripts presented in the
+Deforestation-mapping folder and the files available in "Files". Otherwise, it is necessary to carry out a new training, using the training files of UNet in the folder of the same name.
 To do so, you must have the training images and their respective masks at hand.
 
 ### 1.1 Training a UNet
-The UNet training procedures are described in the README.md file, found in the UNet folder. 
-<br/>
+
+The UNet training procedures are described in the README.md file, found in the UNet folder.
+
 For a new training to be used in the deforestation mapping algorithm, pay attention to using Level 2A Sentinel-2 images and a composition of
 RGB + Near-infrared images (Bands 4-3-2-8).
 For masks, non-forest regions are represented by the value 0, while forest areas are represented by the value 1.
 
 ### 1.2 Using the mapping deforestation script
+
 The following figure shows the work flow of the proposed method (extracted from Bragagnolo et al., 2021):
 
 <p align="center"><img src="https://i.postimg.cc/90Y7CGHr/fluxograma.png" alt="drawing" width="400"/></p>
 
-The scripts for this functionality are in the "Deforestation-mapping" folder. 
-<br/>
+The scripts for this functionality are in the "Deforestation-mapping" folder.
+
 To execute the algorithm, use the file **deforestation_main.py**, where some information must me added:
 
-  
     # scripts that must be in the same path that this one
     from deforestation_mapping import *
     
@@ -94,23 +93,17 @@ and defining the time period to be covered by the analysis (*parameter date*):
                     )
 
 ## 2 Results
+
 At the end of the algorithm, raster images will be obtained indicating the deforestation spots for the given image, as well as vector files, in the shapefile .shp format, also indicating the deforested areas.
 
 ## References
+
 Bragagnolo, L., R. V. da Silva, and J. M. V. Grzybowski. "Towards the automatic monitoring of deforestation in Brazilian rainforest." Ecological Informatics (2021): 101454. https://doi.org/10.1016/j.ecoinf.2021.101454
 
 Bragagnolo, L., Roberto Valmir da Silva, and José Mario Vicensi Grzybowski. "Amazon forest cover change mapping based on semantic segmentation by U-Nets." Ecological Informatics 62 (2021): 101279. https://doi.org/10.1016/j.ecoinf.2021.101279
 
 ## System requirements
-    Python 3.0
-    Keras and Tensorflow
-    sklearn
-    rasterio
-    rkimage
-    fiona
-    cv2
-    numpy_indexed
-    sentinelsat
-    zipfile
-    glob
-    matplotlib
+
+To install gdal on ubuntu linux: https://mothergeo-py.readthedocs.io/en/latest/development/how-to/gdal-ubuntu-pkg.html
+
+To install dependencies, including tensforflow with cuda, run `pip install -r requirements.txt` in a virtual environment.

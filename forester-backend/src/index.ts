@@ -1,15 +1,12 @@
 import express, { Express, Response, Request, NextFunction } from "express";
 import mongoose from "mongoose";
-import dotenv from "dotenv";
 import morgan from "morgan";
 import * as swaggerUI from "swagger-ui-express";
 import * as swaggerJson from "../build/swagger.json";
 import { RegisterRoutes } from "../build/routes";
 import { errorHandler } from "./services/errorHandler.service";
 import cors from "cors";
-
-/* env */
-dotenv.config();
+import { config } from "./utils/startup";
 
 /* Express */
 const app: Express = express();
@@ -43,9 +40,9 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 
 const start = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_URI || "");
+    await mongoose.connect(config.MONGO_URI);
     app.listen(port, () => {
-      console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
+      console.log(`⚡️[server]: Server is running at http://0.0.0.0:${port}`);
     });
   } catch (error) {
     console.error(error);

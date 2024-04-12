@@ -28,5 +28,6 @@ exports.config = {
     SMTP_PORT: parseInt(process.env.SMTP_PORT),
     SMTP_USER: process.env.SMTP_USER,
     SMTP_PASS: process.env.SMTP_PASS,
+    MONGO_URI: process.env.MONGO_URI,
 };
 //# sourceMappingURL=startup.js.map

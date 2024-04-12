@@ -18,8 +18,7 @@ class JobService {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const uuid = (0, crypto_1.randomUUID)();
-                const newJob = yield job_model_1.JobModel.create(Object.assign(Object.assign({}, job), { uuid: uuid, status: "created" }));
-                return newJob;
+                return yield job_model_1.JobModel.create(Object.assign(Object.assign({}, job), { uuid: uuid, status: "created" }));
             }
             catch (error) {
                 if (error.code === 11000) {

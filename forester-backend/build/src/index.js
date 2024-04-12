@@ -43,6 +43,7 @@ const swaggerJson = __importStar(require("../build/swagger.json"));
 const routes_1 = require("../build/routes");
 const errorHandler_service_1 = require("./services/errorHandler.service");
 const cors_1 = __importDefault(require("cors"));
+const startup_1 = require("./utils/startup");
 /* Express */
 const app = (0, express_1.default)();
 const port = process.env.PORT || 8000;
@@ -66,9 +67,9 @@ app.use((err, req, res, next) => {
 });
 const start = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        yield mongoose_1.default.connect(process.env.MONGO_URI || "");
+        yield mongoose_1.default.connect(startup_1.config.MONGO_URI);
         app.listen(port, () => {
-            console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
+            console.log(`⚡️[server]: Server is running at http://0.0.0.0:${port}`);
         });
     }
     catch (error) {
